@@ -1,0 +1,75 @@
+.side-menu-fake {
+  display: flex;
+  position: relative;
+  width: 285px;
+  height: 2000px;
+/*  background-color: lightpink; */
+  
+}
+
+.side-menu {
+  display: flex;
+  position: fixed;
+  left: auto;
+  top: auto;
+  width: 240px;
+  height: 720px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 0px 0px 10px;
+  margin-left: 10px;
+  /*left: 330px;*/
+  /*background-color: rgba(255, 255, 255, 0.418);*/
+}
+
+.side-menu .pencil-icon img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.side-menu div img {
+  width: 22px;
+  height: 22px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.side-menu div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  color: white;
+  cursor: pointer;
+  padding: 3px 4px 3px 10px;
+  border: none;
+  backgrund-color: rgb(59, 59, 59);
+  border-radius: 20px;
+}
+
+.side-menu div div {
+  display: flex;
+  font-family: Roboto, Arial;
+  font-size: 20px;
+  padding-left: 20px;
+}
+
+.post-button button {
+  width: 100%;
+  padding: 16px 0px;
+  background-color: rgb(52, 180, 255);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-family: Roboto, Arial;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer
+}
+
+.side-menu .post-button {
+  padding-left: 0px;
+  margin-right: 40px;
+}
