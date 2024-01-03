@@ -24,8 +24,8 @@
 }
 
 .side-menu .pencil-icon img {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   object-fit: cover;
   cursor: pointer;
 }
@@ -49,6 +49,10 @@
   padding: 0px 0px 0px 0px;
   border: none;
   backgrund-color: rgb(59, 59, 59);
+}
+
+.side-menu .pencil-icon {
+  margin-right: 6px;
 }
 
 .post-button-small{
@@ -137,6 +141,10 @@
     border-radius: 20px;
   }
 
+  .side-menu .pencil-icon {
+    margin: 0px 0px 0px 12px;
+  }
+
   .post-button-small{
     display: initial;
     margin-left: 55px;
@@ -172,8 +180,8 @@
   }
 
   .side-menu .pencil-icon img {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     object-fit: cover;
     cursor: pointer;
   }

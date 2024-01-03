@@ -73,6 +73,7 @@
 
 
 .search-input-right {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -88,6 +89,15 @@
   color: rgb(231, 233, 234);
   padding-left: 50px;
   font-size: 15px;
+}
+
+.search-input-right img{
+  position: absolute;
+  top: 11px;
+  left: 16px;
+  filter: invert(65%);
+  width: 20px;
+  z-index: 10;
 }
 
 .input-right-clicked{
