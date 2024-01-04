@@ -1,4 +1,5 @@
 import {loggedInUser} from './logged-in-user.js';
+
 export const posts = JSON.parse(localStorage.getItem('posts')) ||
 [{
   id: 1,
@@ -9,10 +10,10 @@ export const posts = JSON.parse(localStorage.getItem('posts')) ||
   postDate: 'Sep 25, 2023',
   description: `It's raining here, what about you guys? :o`,
   media: 'Images/Posts/Rainy Day.jpg',
-  reply: 34,
-  repost: 155,
-  like: 329,
-  view: 423
+  reply: 2234,
+  repost: 855,
+  like: 12229,
+  view: 12311423
 },{
   id: 2,
   userID : '0',
@@ -22,7 +23,7 @@ export const posts = JSON.parse(localStorage.getItem('posts')) ||
   postDate: 'Nov 13, 2023',
   description: `look at this cute kitty`,
   media: 'Images/Posts/Cute Kitty.jpg',
-  reply: 534,
+  reply: 2534,
   repost: 23,
   like: 632,
   view: 4236
@@ -35,10 +36,10 @@ export const posts = JSON.parse(localStorage.getItem('posts')) ||
   postDate: 'Sep 20, 2022',
   description: `Just bought a new hamm AND IT'S SOO CUTEEE`,
   media: 'Images/Posts/Hamster.jpg',
-  reply: 134,
+  reply: 3134,
   repost: 394,
-  like: 434,
-  view: 1829
+  like: 32434,
+  view: 711829
 },{
   id: 4,
   userID : '1',
@@ -48,10 +49,10 @@ export const posts = JSON.parse(localStorage.getItem('posts')) ||
   postDate: 'Dec 02, 2014',
   description: `Today I was bored so I drew a T-REX RAWRRR`,
   media: 'Images/Posts/T-REX.jpg',
-  reply: 120,
+  reply: 1120,
   repost: 545,
-  like: 940,
-  view: 2976
+  like: 3940,
+  view: 432976
 },{
   id: 5,
   userID : '1',
@@ -61,21 +62,34 @@ export const posts = JSON.parse(localStorage.getItem('posts')) ||
   postDate: 'Dec 02, 2014',
   description: `Just a Banana passing by..`,
   media: 'Images/Posts/Banana.jpg',
-  reply: 473,
-  repost: 235,
+  reply: 5473,
+  repost: 2235,
   like: 340,
-  view: 6976
+  view: 346976
 }];
 
+export let userPostsUpdated = [];
 export let userPosts = [];
+export let newPosts = 0;
+let totalPosts = 0;
 
 updateUserPosts ()
 export function updateUserPosts () {
   userPosts = [];
-
   posts.forEach(post => {
-    post.userID === loggedInUser.following && userPosts.push(post);
+    loggedInUser.following.forEach
+    (
+      userID => post.userID === userID && userPosts.push(post)
+    );
   });
-  
-  console.log(userPosts);
+
+  updateTotalPosts()
 }
+
+export function updateTotalPosts() {
+  const oldTotalPosts = totalPosts;
+  totalPosts = 0;
+  userPosts.forEach(() => totalPosts ++);
+  newPosts = totalPosts - oldTotalPosts;
+}
+

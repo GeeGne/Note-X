@@ -71,7 +71,6 @@
   }
 }
 
-
 .search-input-right {
   position: relative;
   display: flex;
@@ -220,15 +219,27 @@
   font-size: 15px;
 }
 
-
 .user-container-right button {
   font-weight: 700;
   border: none;
   padding: 8px 16px;
-  background-color: rgb(215, 219, 220);
+  background-color: rgb(221, 226, 228);
   border-radius: 20px; 
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.user-container-right .clicked{
+  background-color: black;
+  border: solid 1px rgb(221, 226, 228);
+  color: rgb(221, 226, 228);
+}
+
+.user-container-right button:hover {
+  opacity: 0.7;
 }
 
 .user-container .right {
   display: flex;
 }
+

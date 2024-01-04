@@ -1,6 +1,7 @@
 import {users} from '../data/users.js';
-import {posts, userPosts, updateUserPosts } from '../data/posts.js';
-import {loggedInUser} from '../data/logged-in-user.js'
+import {posts, userPosts, userPostsUpdated, updateUserPosts, newPosts} from '../data/posts.js';
+import {loggedInUser} from '../data/logged-in-user.js';
+import {editNumber} from '../sort/edit.js';
 
 
 // Elements
@@ -10,6 +11,15 @@ const inputElement = document.querySelector('.js-text-post-input');
 const contentContainer = document.querySelector('.js-content');
 const postsContainer = document.querySelector('.js-posts-section');
 const searchInputElement = document.querySelector('.js-input-right');
+const followButtonElement = document.querySelector('.js-follow-button');
+const showPostsElement = document.querySelector('.js-show-container');
+const showPostsText = document.querySelector('.js-show');
+
+// User-feed elements
+const forYouTextElement = document.querySelector('.js-for-you-text');
+const forYouBarElement = document.querySelector('.js-for-you-bar');
+const followingTextElement = document.querySelector('.js-following-text');
+const followingBarElement = document.querySelector('.js-following-bar');
 
 // search-bar input turn blue when pressed 
 let input;
@@ -47,7 +57,6 @@ postButtonElement.addEventListener('click', () => {
     }
     
     posts.push(newPost);
-    console.log(posts);
     updateUserPosts()
     updatePostDOM();
   }
@@ -84,25 +93,25 @@ const updatePostDOM = () => {
           <div>
             <img src="Images/Content/reply.svg">
             <div class="amount">
-              ${post.reply || '0'}
+              ${editNumber(post.reply) || '0'}
             </div>
           </div>
           <div>
             <img src="Images/Content/repost.svg">
             <div class="amount">
-              ${post.repost || '0'}
+              ${editNumber(post.repost) || '0'}
             </div>
           </div>
           <div>
             <img src="Images/Content/heart.svg">
             <div class="amount">
-              ${post.like || '0'}
+              ${editNumber(post.like) || '0'}
             </div>
           </div>
           <div>
             <img src="Images/Content/view.svg">
             <div class="amount">
-              ${post.view || '0'}
+              ${editNumber(post.view) || '0'}
             </div>
           </div>
           <div>
@@ -122,7 +131,69 @@ const updatePostDOM = () => {
   
 updatePostDOM();
 
+// adding a user as 'follow' to loggedInUser
+followButtonElement.addEventListener('click', () => {
+  followButtonElement.classList 
+  const newFollow = followButtonElement.dataset.userId
+
+  if (followButtonElement.innerText === "Follow") {
+    followButtonElement.innerText = "Following";
+    followButtonElement.classList.add('clicked');
+    loggedInUser.following.push(newFollow);
+    updateUserPosts();
+    updateShowPosts();
+  }else {
+    followButtonElement.innerText = "Follow"
+    followButtonElement.classList.remove('clicked');
+    loggedInUser.following = 
+    loggedInUser.following.filter(
+      userID => userID === newFollow? false : true
+    );
+    updateUserPosts();
+    updateShowPosts();
+    updatePostDOM();
+  }
+
+});
+
+// adds the added posts when we click on 'show posts'
+function updateShowPosts () {
+  if(newPosts > 0) {
+    showPostsElement.classList.remove('show-hide');
+    showPostsText.innerText = `Show ${newPosts} posts`;
+
+    showPostsElement.addEventListener('click', () =>{
+      showPostsElement.classList.add('show-hide');
+      updatePostDOM();
+    });
+  }else{
+    showPostsElement.classList.add('show-hide');
+  }
+};
 
 
 
+// User-feed toggles
+toggleSwitch("for you");
 
+forYouTextElement.addEventListener('click', () => {
+  toggleSwitch("for you");
+});
+
+followingTextElement.addEventListener('click', () => {
+  toggleSwitch("following");
+});
+
+function toggleSwitch (type) {
+  if (type === "for you") {
+    forYouTextElement.classList.remove('un-active-text');
+    forYouBarElement.classList.remove('un-active-bar');
+    followingTextElement.classList.add('un-active-text');
+    followingBarElement.classList.add('un-active-bar');
+  }else {
+    followingTextElement.classList.remove('un-active-text');
+    followingBarElement.classList.remove('un-active-bar');
+    forYouTextElement.classList.add('un-active-text');
+    forYouBarElement.classList.add('un-active-bar');
+  }
+}
