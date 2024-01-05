@@ -13,6 +13,7 @@ export const followButtonElement = document.querySelectorAll('.js-follow-button'
 export const showPostsElement = document.querySelector('.js-show-container');
 export const showPostsText = document.querySelector('.js-show');
 const LoggedInUserPictureElement = document.querySelector('.js-pp-img');
+
 // User-feed elements
 export const forYouTextElement = document.querySelector('.js-for-you-text');
 export const forYouBarElement = document.querySelector('.js-for-you-bar');
@@ -68,8 +69,8 @@ export function setGeneralOptions () {
 
   // User Profile picture update after hitting 'skip' or 'sign-in'
   function updateLoggedInUserPicture () {
-    LoggedInUserPictureElement.innerHTML = `<img src="${loggedInUser.userProfilePicture}">`;
-    console.log(LoggedInUserPictureElement);
+    LoggedInUserPictureElement.innerHTML = 
+    `<img src="${loggedInUser.userProfilePicture}">`;
   }
 
   // search-bar input turn blue when clicked 
