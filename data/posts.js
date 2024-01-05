@@ -66,30 +66,88 @@ export const posts = JSON.parse(localStorage.getItem('posts')) ||
   repost: 2235,
   like: 340,
   view: 346976
+},{
+  id: 6,
+  userID : '3',
+  userName: 'Harry Shelton' ,
+  userProfilePicture: 'Images/Users pp/pexels-harry-shelton-7239911.jpg',
+  at: 'Harryroll',
+  postDate: 'Dec 02, 2014',
+  description: `My new Album is live!`,
+  media: 'Images/Posts/Rock and Roll Album.jpg',
+  reply: 32473,
+  repost: 2235,
+  like: 68340,
+  view: 446976
+},{
+  id: 7,
+  userID : '2',
+  userName: 'Leo Willson' ,
+  userProfilePicture: 'Images/Users pp/Leo Willson.jpg',
+  at: 'badboy',
+  postDate: 'Dec 02, 2014',
+  description: `Get ready boyss cus Tomorrow is the school basketball match IM SO EXCITED!!`,
+  media: 'Images/Posts/Basketball Match.jpg',
+  reply: 1473,
+  repost: 235,
+  like: 6340,
+  view: 11975
+},{
+  id: 8,
+  userID : '3',
+  userName: 'Harry Shelton' ,
+  userProfilePicture: 'Images/Users pp/pexels-harry-shelton-7239911.jpg',
+  at: 'Harryroll',
+  postDate: 'Dec 02, 2014',
+  description: `Live performance was great today! It was a blessing to meet you and hope you're having a happy holiday yall!!`,
+  media: 'Images/Posts/Live Performance.jpg',
+  reply: 5973,
+  repost: 3735,
+  like: 7340,
+  view: 121946
+},{
+  id: 9,
+  userID : '2',
+  userName: 'Leo Willson' ,
+  userProfilePicture: 'Images/Users pp/Leo Willson.jpg',
+  at: 'badboy',
+  postDate: 'Dec 02, 2014',
+  description: `Today I ordered a big mac.. IT'S SOO GOOD`,
+  media: 'Images/Posts/Big Mac.jpg',
+  reply: 473,
+  repost: 235,
+  like: 1340,
+  view: 2937
 }];
 
-export let userPostsUpdated = [];
 export let userPosts = [];
 export let newPosts = 0;
-let totalPosts = 0;
 
 updateUserPosts ()
 export function updateUserPosts () {
   userPosts = [];
-  posts.forEach(post => {
-    loggedInUser.following.forEach
-    (
-      userID => post.userID === userID && userPosts.push(post)
+  
+  loggedInUser.following.forEach(userID => {
+    posts.forEach(
+      post => post.userID === userID && 
+      userPosts.push(post)
+    );
+  })
+
+};
+
+export function newFollowPosts(usersID) {
+  newPosts = 0;
+  let remainingUsers = []
+  loggedInUser.following.forEach(ID => { 
+    remainingUsers = usersID.filter(
+      userID => ID === userID ? false : true
     );
   });
 
-  updateTotalPosts()
-}
+  remainingUsers.forEach(userID => {
+    posts.forEach(post => post.userID === userID && newPosts ++);
+  });
 
-export function updateTotalPosts() {
-  const oldTotalPosts = totalPosts;
-  totalPosts = 0;
-  userPosts.forEach(() => totalPosts ++);
-  newPosts = totalPosts - oldTotalPosts;
-}
+};
 

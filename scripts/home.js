@@ -1,9 +1,14 @@
-import {users} from '../data/users.js';
-import {posts, userPosts, userPostsUpdated, updateUserPosts, newPosts} from '../data/posts.js';
+/*import {users} from '../data/users.js';
+import {posts, userPosts, userPostsUpdated, updateUserPosts, newPosts, newFollowPosts} from '../data/posts.js';
 import {loggedInUser} from '../data/logged-in-user.js';
-import {editNumber} from '../sort/edit.js';
+import {editNumber} from './edit.js';
+*/
+import {setGeneralOptions} from './Home/general.js';
+import {updateForYouSummary} from './Home/for-you.js';
 
+setGeneralOptions()
 
+/*
 // Elements
 const mainContainer = document.querySelector('.js-main');
 const postButtonElement = document.querySelector('.js-post-button');
@@ -11,7 +16,7 @@ const inputElement = document.querySelector('.js-text-post-input');
 const contentContainer = document.querySelector('.js-content');
 const postsContainer = document.querySelector('.js-posts-section');
 const searchInputElement = document.querySelector('.js-input-right');
-const followButtonElement = document.querySelector('.js-follow-button');
+const followButtonElement = document.querySelectorAll('.js-follow-button');
 const showPostsElement = document.querySelector('.js-show-container');
 const showPostsText = document.querySelector('.js-show');
 
@@ -21,7 +26,7 @@ const forYouBarElement = document.querySelector('.js-for-you-bar');
 const followingTextElement = document.querySelector('.js-following-text');
 const followingBarElement = document.querySelector('.js-following-bar');
 
-// search-bar input turn blue when pressed 
+// search-bar input turn blue when clicked 
 let input;
 searchInputElement.addEventListener('click', () => {
   searchInputElement.classList.add('input-right-clicked');
@@ -57,7 +62,7 @@ postButtonElement.addEventListener('click', () => {
     }
     
     posts.push(newPost);
-    updateUserPosts()
+    userPosts.push(newPost);
     updatePostDOM();
   }
 });
@@ -132,19 +137,20 @@ const updatePostDOM = () => {
 updatePostDOM();
 
 // adding a user as 'follow' to loggedInUser
-followButtonElement.addEventListener('click', () => {
-  followButtonElement.classList 
-  const newFollow = followButtonElement.dataset.userId
-
-  if (followButtonElement.innerText === "Follow") {
-    followButtonElement.innerText = "Following";
-    followButtonElement.classList.add('clicked');
-    loggedInUser.following.push(newFollow);
-    updateUserPosts();
-    updateShowPosts();
+followButtonElement.forEach(user => {
+user.addEventListener('click', () => {
+  const newFollow = user.dataset.userId
+console.log(newFollow);
+  if (user.innerText === "Follow") {
+    user.innerText = "Following";
+    user.classList.add('clicked');
+    //loggedInUser.following.push(newFollow);
+    //updateUserPosts();
+    newFollowPosts(newFollow);
+    updateShowPosts(newFollow);
   }else {
-    followButtonElement.innerText = "Follow"
-    followButtonElement.classList.remove('clicked');
+    user.innerText = "Follow"
+    user.classList.remove('clicked');
     loggedInUser.following = 
     loggedInUser.following.filter(
       userID => userID === newFollow? false : true
@@ -155,15 +161,18 @@ followButtonElement.addEventListener('click', () => {
   }
 
 });
-
+})
 // adds the added posts when we click on 'show posts'
-function updateShowPosts () {
+function updateShowPosts (newFollow) {
   if(newPosts > 0) {
     showPostsElement.classList.remove('show-hide');
     showPostsText.innerText = `Show ${newPosts} posts`;
 
     showPostsElement.addEventListener('click', () =>{
       showPostsElement.classList.add('show-hide');
+      loggedInUser.following.push(newFollow);
+
+      updateUserPosts();
       updatePostDOM();
     });
   }else{
@@ -197,3 +206,4 @@ function toggleSwitch (type) {
     forYouBarElement.classList.add('un-active-bar');
   }
 }
+*/

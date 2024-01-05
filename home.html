@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="Styles/side-menu.css">
     <link rel="stylesheet" href="Styles/Content.css">
     <link rel="stylesheet" href="styles/right-side.css">
+    <link rel="stylesheet" href="styles/intro.css">
+    <link rel="stylesheet" href="styles/Sign-up.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +18,110 @@
 
   </head>
   <body class="body">
+
+    <div class="intro-background js-intro">
+      <div class="intro-info">
+        <div class="header">
+          <div class="note-x">
+            <img src="Images/Side Panel/Pencil-icon.svg">
+          </div>
+          <div class="title">
+            <div>
+              Welcome to Note X Project!
+            </div>
+            <div style="margin-left: 0px;font-size: 20px">
+              Version: 4.0
+            </div>
+          </div>
+        </div>
+        <div class="description">
+          <div style="font-size: 18px;font-weight: bold;">
+           The goal is to make a website similar to Twitter 
+          </div>
+          <div>
+            Latest Features:
+          </div>
+          <div style="margin-left: 20px;">
+            <ul>
+              <li>Add a Post (text only).</li>
+              <li>You can Follow/unFollow from who to follow section.</li>
+              <li>Show posts feature lets you see your new following posts.</li>
+              <li>Fully resizable window.</li>
+              <li>Sign up feature (optional). </li>
+            </ul>
+          </div>
+          <div>
+            Working on:
+          </div>
+          <div style="margin-left: 20px;">
+            <ul>
+              <li>Ability to post an image.</li>
+              <li>Following tab to be interactive.</li>
+              <li>Ability to have a profile picture when signing up.</li>
+              <li>Real-time post date.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="intro-button js-intro-button">
+          <button>
+            Continue
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sign-background js-sign">
+      <div class="sign-info">
+        <div class="header">
+          <div class="note-x">
+            <img src="Images/Side Panel/Pencil-icon.svg">
+          </div>
+          <div class="title">
+            Sign up
+          </div>
+        </div>
+        <div class="description">
+          <div class="container">
+            <div class="name">
+              <div>
+                NickName: 
+              </div>
+              <div>
+                @:
+              </div>
+            </div>
+            <div class="input"> 
+              <div>
+                <input 
+                  type="text" 
+                  placeholder="Enter a nickname"
+                  class="js-name-input"
+                >
+              </div>
+              <div>
+                <input 
+                  type="text" 
+                  placeholder="Enter an @ title"
+                  class="js-at-input"
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sign-button">
+          <button class="sign js-sign-button">
+            Sign Up
+          </button>
+          <button class="skip js-skip-button">
+            Skip
+          </button>
+        </div>
+        <div class="sign-error js-sign-error hide-sign-error">
+          Error: Please fill both inputs.
+        </div>
+      </div>
+    </div>
+
     <div class="main js-main">
 
       <div class="side-menu-fake">
@@ -120,8 +226,8 @@
 
         <div class="post-menu">
           <div class="top-section">
-            <div class="top-left-section">
-              <img src="Images/Content/Human and a kitty.jpg">
+            <div class="top-left-section js-pp-img">
+            
             </div>
             <div class="top-right-section">
               <input 
@@ -265,7 +371,7 @@
           <div class="user-container">
             <div class="user-container-left">
               <div class="user-container-left-left">
-                  <img src="Images/Users pp/depositphotos_1329602-stock-photo-happy-teenager.jpg">
+                  <img src="Images/Users pp/Leo Willson.jpg">
               </div>
               <div class="user-container-left-right">
                 <div class="top">
@@ -277,7 +383,10 @@
               </div>
             </div>
             <div class="user-container-right">
-              <button>
+              <button
+                class="js-follow-button"
+                data-user-id="2"
+              >
                 Follow
               </button>
             </div>
@@ -297,7 +406,10 @@
               </div>
             </div>
             <div class="user-container-right">
-              <button>
+              <button
+                class="js-follow-button"
+                data-user-id="3"
+              >
                 Follow
               </button>
             </div>
@@ -311,7 +423,7 @@
       
     </div>
 
-    <script type="module" src=scripts/main-page.js>
+    <script type="module" src=scripts/home.js>
     </script>
   </body>
 </html>
