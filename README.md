@@ -12,5 +12,5 @@ The goal is to make a website similar to Twitter
 ~ Following tab to be interactive.
 ~ Ability to have a profile picture when signing up.
 ~ Real-time post date.
-#Setup
+# Setup
 ~This project uses modules, To run this project open your CS code editor, open the Note-X folder, then index.html then open the live server
